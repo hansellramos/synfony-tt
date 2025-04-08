@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <h1>Product List</h1>
+  
+  <div *ngIf="loading" class="text-center my-5">
+    <p>Loading products...</p>
+  </div>
+  
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+  
+  <div *ngIf="!loading && !error && products.length === 0" class="alert alert-info">
+    No products available.
+  </div>
+  
+  <div *ngIf="!loading && products.length > 0" class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>${{ product.price.toFixed(2) }}</td>
+            <td>
+              <a [routerLink]="['/products', product.id]" class="view-details-btn">View Details</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

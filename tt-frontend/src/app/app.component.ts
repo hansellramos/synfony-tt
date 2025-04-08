@@ -3,10 +3,25 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  template: `
+    <div class="app-container">
+      <header>
+        <h1>Product Catalog</h1>
+      </header>
+      
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+      
+      <footer>
+        <p>&copy; 2025 Product Catalog App</p>
+      </footer>
+    </div>
+  `,
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'tt-frontend';
+  title = 'Product Catalog';
 }

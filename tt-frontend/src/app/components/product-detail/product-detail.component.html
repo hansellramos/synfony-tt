@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <div class="product-detail-card">
+    <button class="back-button" (click)="goBack()">&larr; Back to Products</button>
+    
+    <div *ngIf="loading" class="text-center my-5">
+      <p>Loading product details...</p>
+    </div>
+    
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+    
+    <div *ngIf="!loading && !error && product">
+      <h1 class="product-title">{{ product.name }}</h1>
+      
+      <div class="product-info">
+        <div class="product-id">ID: {{ product.id }}</div>
+        <div class="product-price">${{ product.price.toFixed(2) }}</div>
+      </div>
+      
+      <div class="product-description">
+        <h2>Description</h2>
+        <p>{{ product.description }}</p>
+      </div>
+    </div>
+    
+    <div *ngIf="!loading && !error && !product" class="alert alert-warning">
+      Product not found.
+    </div>
+  </div>
+</div>
